@@ -42,7 +42,6 @@
   
               <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="q-pa-md ">
-  
                   <q-input outlined v-model="currentDate" mask="date" :rules="['date']" type="text" >
                     <template v-slot:append>
                       <q-icon name="event" class="cursor-pointer">
@@ -56,7 +55,6 @@
                       </q-icon>
                     </template>
                   </q-input>
-  
                 </div>
               </div>
   

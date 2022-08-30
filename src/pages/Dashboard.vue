@@ -229,7 +229,6 @@ export default {
     },
     methods: {
         windowSize() {
-
             if (599.99 > this.windowWidth > 0)
                 return 'q-pa-xs'
             else if (1023.99 > this.windowWidth && this.windowWidth > 600)
