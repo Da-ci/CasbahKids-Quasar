@@ -55,8 +55,8 @@
 
         <q-card flat class="my-card audio q-pa-lg">
             <div class="name">{{ title }}</div>
-            <audio-player ref="audioPlayer" :audio-list="audioList.map((elm) => elm.url)"
-                :before-play="handleBeforePlay" show-play-button="false" />
+            <!-- <audio-player ref="audioPlayer" :audio-list="audioList.map((elm) => elm.url)"
+                :before-play="handleBeforePlay" show-play-button="false" /> -->
         </q-card>
 
     </q-page>
@@ -64,7 +64,7 @@
 
 <script>
 import { computed, onMounted, onUnmounted, ref } from "vue"
-import AudioPlayer from "@liripeng/vue-audio-player";
+// import AudioPlayer from "@liripeng/vue-audio-player";
 
 
 export default {
