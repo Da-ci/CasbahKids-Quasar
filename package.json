@@ -9,7 +9,6 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@liripeng/vue-audio-player": "git://github.com/Da-ci/vue-audio-player.git",
     "@quasar/extras": "^1.0.0",
     "cordova": "^11.0.0",
     "core-js": "^3.6.5",
