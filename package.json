@@ -9,6 +9,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@d1ci/vue-audio-player-updated": "^1.0.1",
     "@quasar/extras": "^1.0.0",
     "cordova": "^11.0.0",
     "core-js": "^3.6.5",
