@@ -6,7 +6,7 @@
           Record
         </q-btn>
         <q-btn color="primary" push size="lg" icon="stop" @click="this.stop()">Stop</q-btn> -->
-        <button>
+        <q-btn @click="this.startTime()">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
@@ -19,7 +19,7 @@
             </div>
           </div>
           <span>Enregistrer</span>
-        </button>
+        </q-btn>
       </div>
     </div>
     <span class="flex flex-center q-mt-md">{{ this.time ? this.time : '00:00' }}</span>
@@ -56,6 +56,9 @@ export default {
     this.init()
   },
   methods: {
+    test(){
+      console.log("buttoning")
+    },
     init() {
       if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -141,14 +144,13 @@ export default {
 </script>
 
 <style scoped>
-/* From uiverse.io by @adamgiebl */
 button {
   font-family: inherit;
-  font-size: 20px;
+  /* font-size: 20px; */
   background: royalblue;
   color: white;
-  padding: 0.7em 1em;
-  padding-left: 0.9em;
+  /* padding: 0.7em 1em; */
+  /* padding-left: 0.9em; */
   display: flex;
   align-items: center;
   border: none;
