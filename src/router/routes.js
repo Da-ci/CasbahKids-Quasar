@@ -28,7 +28,9 @@ const routes = [
       { path: '/dashboard', component: () => import('pages/Dashboard.vue') },
       { path: '/show/profile', component: () => import('pages/Profile.vue') },
       { path: '/show/story', component: () => import('pages/Stories/ShowStory.vue') },
-      { path: '/show/stories', component: () => import('pages/Stories/ShowStories.vue') }
+      { path: '/show/stories', component: () => import('pages/Stories/ShowStories.vue') },
+      { path: '/add', component: () => import('pages/Stories/AddStory.vue') }
+
     ],
 
   },

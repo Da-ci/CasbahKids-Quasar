@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@quasar/app-webpack": "^3.0.0",
-    "electron": "^20.1.0",
+    "electron": "^20.1.1",
     "electron-packager": "^15.2.0"
   },
   "browserslist": [
