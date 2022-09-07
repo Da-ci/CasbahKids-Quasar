@@ -91,7 +91,7 @@
                         <q-separator />
 
                         <q-tab-panels v-model="tab" animated>
-                            <q-tab-panel name="mails" style="padding: 0px;">
+                            <q-tab-panel name="mails">
                                 <div class="text-h6">Uploader</div>
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">
@@ -116,7 +116,7 @@
                                 </div>
                             </q-tab-panel>
 
-                            <q-tab-panel name="alarms" style="padding: 0px;  overflow-y: hidden;">
+                            <q-tab-panel name="alarms">
                                 <div class="text-h6">Enregistrer (en developpement)</div>
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">

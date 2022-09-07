@@ -1,16 +1,13 @@
 <template>
   <div>
     <div class="column items-center">
-      <div class="col-3 q-gutter-xs">
-        <!-- <q-btn color="primary" push size="lg" icon="mic" @click="this.record()">
-          Record
-        </q-btn>
-        <q-btn color="primary" push size="lg" icon="stop" @click="this.stop()">Stop</q-btn> -->
-        <q-btn @click="this.startTime()">
+      <div class="row q-gutter-xs">
+
+        <q-btn color="primary" @click="_isAnimate(), record()">
           <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                fill="currentColor">
+            <div :class="{ 'svg-wrapper': isAnimate }">
+              <svg :class="{ 'svg': isAnimate }" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                width="24px" fill="currentColor">
                 <path d="M0 0h24v24H0z" fill="none" />
                 <circle cx="9" cy="9" r="4" />
                 <path
@@ -18,15 +15,18 @@
               </svg>
             </div>
           </div>
-          <span>Enregistrer</span>
+          <span :class="{ 'span': isAnimate }">Enregistrer</span>
         </q-btn>
+
+        <q-btn color="primary" @click="_notAnimate(), stop()">
+          <span>stop</span>
+        </q-btn>
+
       </div>
     </div>
-    <span class="flex flex-center q-mt-md">{{ this.time ? this.time : '00:00' }}</span>
-    <div class="column items-center q-pt-md">
-      <div class="col">
-        <audio controls :src="audio"></audio>
-      </div>
+    <span class="flex flex-center q-ma-md">{{ this.time ? this.time : '00:00' }}</span>
+    <div>
+        <audio controls :src="audio" style="width: 100%;"></audio>
     </div>
   </div>
 </template>
@@ -50,14 +50,18 @@ export default {
       stoppedDuration: 0,
       started: null,
       running: null,
+      isAnimate: false,
     }
   },
   mounted() {
     this.init()
   },
   methods: {
-    test(){
-      console.log("buttoning")
+    _isAnimate(){
+      this.isAnimate = true
+    },
+    _notAnimate(){
+      this.isAnimate = false
     },
     init() {
       if (navigator.mediaDevices.getUserMedia) {
@@ -144,56 +148,55 @@ export default {
 </script>
 
 <style scoped>
-button {
-  font-family: inherit;
-  /* font-size: 20px; */
-  background: royalblue;
-  color: white;
-  /* padding: 0.7em 1em; */
-  /* padding-left: 0.9em; */
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.2s;
-}
-
-button span {
-  display: block;
-  margin-left: 0.3em;
-  transition: all 0.3s ease-in-out;
-}
-
-button svg {
-  display: block;
-  transform-origin: center center;
-  transition: transform 0.3s ease-in-out;
-}
-
-button:hover .svg-wrapper {
-  animation: fly-1 0.6s ease-in-out infinite alternate;
-}
-
-button:hover svg {
-  transform: translateX(55px) rotate(45deg) scale(1.1);
-}
-
-button:hover span {
-  transform: translateX(115px);
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.1em);
+  /* From uiverse.io by @adamgiebl */
+  button {
+    font-family: inherit;
+    /* font-size: 20px; */
+    /* padding: 0.7em 1em; */
+    /* padding-left: 0.9em; */
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.2s;
   }
-
-  to {
-    transform: translateY(-0.1em);
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
   }
-}
-</style>
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  .svg {
+    transform: translateX(55px) rotate(45deg) scale(1.1);
+  }
+  
+  .span {
+    transform: translateX(115px);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+  </style>
