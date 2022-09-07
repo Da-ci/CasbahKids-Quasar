@@ -56,9 +56,19 @@
             </q-item-section>
           </q-item>
 
+          <q-item to="/manage/stories" exact clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="o_manage_search" />
+            </q-item-section>
+
+            <q-item-section>
+              Gestion d'histoire
+            </q-item-section>
+          </q-item>
+
           <q-item to="/show/story" exact clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="o_reorder" />
+              <q-icon name="o_history_edu" />
             </q-item-section>
 
             <q-item-section>
