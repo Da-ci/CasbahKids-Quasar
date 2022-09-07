@@ -3,7 +3,7 @@
     <div class="column items-center">
       <div class="row q-gutter-xs">
 
-        <q-btn color="primary" @click="_isAnimate(), record()">
+        <q-btn color="primary" @click="record()">
           <div class="svg-wrapper-1">
             <div :class="{ 'svg-wrapper': isAnimate }">
               <svg :class="{ 'svg': isAnimate }" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
@@ -17,16 +17,14 @@
           </div>
           <span :class="{ 'span': isAnimate }">Enregistrer</span>
         </q-btn>
-
-        <q-btn color="primary" @click="_notAnimate(), stop()">
+        <!-- <q-btn color="primary" @click="_notAnimate(), stop()">
           <span>stop</span>
-        </q-btn>
-
+        </q-btn> -->
       </div>
     </div>
     <span class="flex flex-center q-ma-md">{{ this.time ? this.time : '00:00' }}</span>
     <div>
-        <audio controls :src="audio" style="width: 100%;"></audio>
+      <audio controls :src="audio" style="width: 100%;"></audio>
     </div>
   </div>
 </template>
@@ -42,6 +40,7 @@ export default {
       chunks: [],
       audios: [],
       audio: null,
+      allowAudio: false,
       btnStop: false,
       recorder: false,
       time: '',
@@ -57,16 +56,11 @@ export default {
     this.init()
   },
   methods: {
-    _isAnimate(){
-      this.isAnimate = true
-    },
-    _notAnimate(){
-      this.isAnimate = false
-    },
     init() {
       if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true })
           .then((stream) => {
+            this.allowAudio = true
             this.mediaRecorder = new MediaRecorder(stream)
 
             this.mediaRecorder.ondataavailable = (e) => {
@@ -81,6 +75,8 @@ export default {
           })
           .catch(function (err) {
             console.log('The following getUserMedia error occured: ' + err)
+            alert('Please allow the microphone to be used')
+
           })
       } else {
         alert('getUserMedia not supported on your browser!')
@@ -88,13 +84,20 @@ export default {
     },
     record() {
       if (this.recorder) return
+      if(!this.allowAudio) {
+        alert('Please allow to use the audio in settings')
+        return
+      }
+
+      this.isAnimate = true
       this.mediaRecorder.start()
       this.recorder = true
       this.startTime()
     },
     stop() {
       if (!this.recorder) return
-      this.recorder = false;
+      this.isAnimate = false
+      this.recorder = false
       this.mediaRecorder.stop()
       this.btnStop = false
       this.stopTime()
@@ -148,55 +151,55 @@ export default {
 </script>
 
 <style scoped>
-  /* From uiverse.io by @adamgiebl */
-  button {
-    font-family: inherit;
-    /* font-size: 20px; */
-    /* padding: 0.7em 1em; */
-    /* padding-left: 0.9em; */
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: all 0.2s;
+/* From uiverse.io by @adamgiebl */
+button {
+  font-family: inherit;
+  /* font-size: 20px; */
+  /* padding: 0.7em 1em; */
+  /* padding-left: 0.9em; */
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.svg {
+  transform: translateX(55px) rotate(45deg) scale(1.1);
+}
+
+.span {
+  transform: translateX(115px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
   }
-  
-  button span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
+
+  to {
+    transform: translateY(-0.1em);
   }
-  
-  button svg {
-    display: block;
-    transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .svg-wrapper {
-    animation: fly-1 0.6s ease-in-out infinite alternate;
-  }
-  
-  .svg {
-    transform: translateX(55px) rotate(45deg) scale(1.1);
-  }
-  
-  .span {
-    transform: translateX(115px);
-  }
-  
-  button:active {
-    transform: scale(0.95);
-  }
-  
-  @keyframes fly-1 {
-    from {
-      transform: translateY(0.1em);
-    }
-  
-    to {
-      transform: translateY(-0.1em);
-    }
-  }
-  </style>
+}
+</style>

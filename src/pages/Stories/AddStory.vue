@@ -120,7 +120,9 @@
                                 <div class="text-h6">Enregistrer (en developpement)</div>
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">
-                                        <AudioRecorder></AudioRecorder>
+                                        <div class="q-pt-lg">
+                                            <AudioRecorder></AudioRecorder>
+                                        </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="q-pa-md">

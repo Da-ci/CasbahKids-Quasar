@@ -19,10 +19,10 @@
                                         label="Mot de passe" />
                                 </q-card-section>
                                 <q-card-actions class="q-px-md">
+                                    <q-btn unelevated color="primary" size="lg" class="full-width" label="Connection"
+                                        type="submit" />
                                     <!-- <q-btn unelevated color="primary" size="lg" class="full-width" label="Connection"
-                                        type="submit" /> -->
-                                        <q-btn unelevated color="primary" size="lg" class="full-width" label="Connection"
-                                        to="/dashboard" />
+                                        to="/dashboard" /> -->
                                 </q-card-actions>
                                 <q-card-section class="text-center q-pa-none">
                                     <p class="text-white">Non enregistré ?
@@ -44,6 +44,7 @@
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
@@ -54,6 +55,10 @@ export default {
 
         const emailRules = [val => val && val.length > 0 || 'Saisissez votre email']
         const passwordRules = [val => val && val.length > 8 || 'Votre mot de passe doit contenir au moins au moins 8 caracteres']
+        // const emailRules = null
+        // const passwordRules = null
+
+        const router = useRouter()
 
         return {
             email,
@@ -70,19 +75,27 @@ export default {
                         message: 'Vous devez remplir tout les champs'
                     })
                 } else {
-                    $q.notify({
-                        color: 'green-4',
-                        textColor: 'white',
-                        icon: 'cloud_done',
-                        message: 'Vous etes enregistré'
-                    })
+                    if (email.value === 'casbah@casbah.com' && password.value === 'casbah@casbah.com') {
+                        router.push({ path: '/dashboard' })
+                        $q.notify({
+                            color: 'green-4',
+                            textColor: 'white',
+                            icon: 'cloud_done',
+                            message: 'Vous etes enregistré'
+                        })
+                    } else { 
+                        $q.notify({
+                            color: 'red-5',
+                            textColor: 'white',
+                            icon: 'warning',
+                            message: 'Vos coordonnées sont incorrectes !'
+                        })
+                    }
+
                 }
-
             },
-
         }
     },
-
 }
 </script>
 
@@ -111,5 +124,4 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 </style>
