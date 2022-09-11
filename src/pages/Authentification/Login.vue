@@ -10,7 +10,7 @@
                         <div class="row">
                             <q-card flat class="q-pa-lg shadow-1 border-radius">
                                 <q-card-section>
-                                    <q-input filled outlined clearable color="indigo-1" label-color="indigo-1"
+                                    <q-input filled outlined clearable color="indigo-1" label-color="white"
                                         ref="emailRef" v-model="email" type="email" :rules="emailRules" lazy-rules
                                         label="Email" class="q-mb-lg" />
 

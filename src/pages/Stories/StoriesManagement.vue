@@ -1,5 +1,5 @@
 <template>
-    <!-- <q-page :class=windowSize()>
+    <q-page :class=windowSize()>
         <div class="row q-col-gutter-sm">
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
@@ -10,11 +10,12 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
             </div>
-
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-info">
@@ -24,11 +25,12 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
             </div>
-
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-info">
@@ -38,11 +40,12 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
             </div>
-
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-info">
@@ -52,11 +55,12 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
             </div>
-
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-info">
@@ -66,11 +70,12 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
             </div>
-
             <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-info">
@@ -80,34 +85,8 @@
                     <router-link style="text-decoration: none; color: inherit" to="/">
                         <div class="card-bio">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
-                <div class="card">
-                    <div class="card-info">
-                        <p class="title">Le titre de l'histoire</p>
-                        <p class="subtitle">Yacine Loldj</p>
-                    </div>
-                    <router-link style="text-decoration: none; color: inherit" to="/">
-                        <div class="card-bio">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
-                <div class="card">
-                    <div class="card-info">
-                        <p class="title">Le titre de l'histoire</p>
-                        <p class="subtitle">Yacine Loldj</p>
-                    </div>
-                    <router-link style="text-decoration: none; color: inherit" to="/">
-                        <div class="card-bio">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <q-btn outline round color="primary q-mr-xs"><q-icon name="check" /></q-btn>
+                            <q-btn outline round color="primary"><q-icon name="remove" /></q-btn>
                         </div>
                     </router-link>
                 </div>
@@ -115,12 +94,12 @@
 
 
         </div>
-    </q-page> -->
+    </q-page>
 
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { ref } from 'vue'
 
 export default {
     setup() {
@@ -158,7 +137,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .card {
     width: 100%;
     height: 254px;

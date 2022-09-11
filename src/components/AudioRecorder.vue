@@ -17,9 +17,9 @@
           </div>
           <span :class="{ 'span': isAnimate }">Enregistrer</span>
         </q-btn>
-        <!-- <q-btn color="primary" @click="_notAnimate(), stop()">
+        <q-btn color="primary" @click=" stop()">
           <span>stop</span>
-        </q-btn> -->
+        </q-btn>
       </div>
     </div>
     <span class="flex flex-center q-ma-md">{{ this.time ? this.time : '00:00' }}</span>

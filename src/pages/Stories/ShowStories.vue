@@ -113,6 +113,61 @@
                 </div>
             </div>
 
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="card">
+                    <div class="card-info">
+                        <p class="title">Le titre de l'histoire</p>
+                        <p class="subtitle">Yacine Loldj</p>
+                    </div>
+                    <router-link style="text-decoration: none; color: inherit" to="/">
+                        <div class="card-bio">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="card">
+                    <div class="card-info">
+                        <p class="title">Le titre de l'histoire</p>
+                        <p class="subtitle">Yacine Loldj</p>
+                    </div>
+                    <router-link style="text-decoration: none; color: inherit" to="/">
+                        <div class="card-bio">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="card">
+                    <div class="card-info">
+                        <p class="title">Le titre de l'histoire</p>
+                        <p class="subtitle">Yacine Loldj</p>
+                    </div>
+                    <router-link style="text-decoration: none; color: inherit" to="/">
+                        <div class="card-bio">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="card">
+                    <div class="card-info">
+                        <p class="title">Le titre de l'histoire</p>
+                        <p class="subtitle">Yacine Loldj</p>
+                    </div>
+                    <router-link style="text-decoration: none; color: inherit" to="/">
+                        <div class="card-bio">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
 
         </div>
     </q-page>
