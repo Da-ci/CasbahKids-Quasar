@@ -62,7 +62,17 @@
             </q-item-section>
 
             <q-item-section>
-              Gestion d'histoire
+              Gestion d'histoires
+            </q-item-section>
+          </q-item>
+
+          <q-item to="/manage/story" exact clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="o_manage_search" />
+            </q-item-section>
+
+            <q-item-section>
+              Exemple gestion d'une histoire
             </q-item-section>
           </q-item>
 

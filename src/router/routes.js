@@ -30,8 +30,7 @@ const routes = [
       { path: '/show/story', component: () => import('pages/Stories/ShowStory.vue') },
       { path: '/show/stories', component: () => import('pages/Stories/ShowStories.vue') },
       { path: '/add', component: () => import('pages/Stories/AddStory.vue') },
-      { path: '/manage/stories', component: () => import('pages/Stories/StoriesManagement.vue') }
-
+      { path: '/manage/stories', component: () => import('pages/Stories/StoriesManagement.vue') },
 
     ],
 
