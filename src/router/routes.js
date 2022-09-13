@@ -26,15 +26,19 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/dashboard', component: () => import('pages/Dashboard.vue') },
-      { path: '/show/profile', component: () => import('pages/Profile.vue') },
+      { path: '/profile', component: () => import('pages/MyProfile.vue') },
       { path: '/show/story', component: () => import('pages/Stories/ShowStory.vue') },
       { path: '/show/stories', component: () => import('pages/Stories/ShowStories.vue') },
       { path: '/add', component: () => import('pages/Stories/AddStory.vue') },
       { path: '/manage/stories', component: () => import('pages/Stories/StoriesManagement.vue') },
+      { path: '/show/profile/', component: () => import('pages/ShowProfile.vue') }
 
     ],
-
   },
+  // {
+  //    path: '/landing', 
+  //    component: () => import('pages/Landing/Index.html') 
+  // },
 
   // Always leave this as last one,
   // but you can also remove it

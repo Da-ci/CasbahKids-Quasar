@@ -25,10 +25,14 @@
                         <q-btn outline color="primary" label="Consulter" />
                     </div>
                 </div>
-                <div class="manage-story">
+                <!-- <div class="manage-story">
                     <q-btn outline color="primary" label="Désapprouver" @click="disapprove" />
                     <q-btn unelevated color="primary" label="Approuver" />
-
+                </div> -->
+                <div class="manage-story">
+                    <q-chip flat icon="bookmark">En attente</q-chip>
+                    <!-- <q-chip flat icon="bookmark">Approuvé</q-chip> -->
+                    <q-btn :disable="!progress" color="negative" label="Supprimer" />
                 </div>
 
             </div>
@@ -100,7 +104,7 @@ export default {
                     cancel: true,
                     persistent: true
                 }).onOk(data => {
-                    // console.log('>>>> OK, received', data)
+                    console.log('>>>> OK, received', data)
                 })
             }
         }
@@ -235,6 +239,7 @@ export default {
     .information {
         flex-direction: row;
     }
+
     .content {
         margin-top: -3px;
     }

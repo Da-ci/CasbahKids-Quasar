@@ -66,16 +66,6 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/manage/story" exact clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="o_manage_search" />
-            </q-item-section>
-
-            <q-item-section>
-              Exemple gestion d'une histoire
-            </q-item-section>
-          </q-item>
-
           <q-item to="/show/story" exact clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="o_history_edu" />
@@ -131,16 +121,16 @@
 
       <q-img class="absolute-top" src="../statics/square.jpg" style="height: 142px">
         <div class="absolute-bottom bg-transparent">
-          <router-link style="text-decoration: none; color: inherit" to="/show/profile">
+          <router-link style="text-decoration: none; color: inherit" to="/profile">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="../statics/avatar.png">
               <q-tooltip anchor="center right" self="center left" :offset="[10, 10]">
-                <strong>Tooltip</strong> on <em>right</em>
+                <strong>Mon profile</strong>
               </q-tooltip>
             </q-avatar>
           </router-link>
 
-          <router-link style="text-decoration: none; color: inherit" to="/show/profile">
+          <router-link style="text-decoration: none; color: inherit" to="/profile">
             <div class="text-weight-bold">Ali SI-Larbi</div>
             <div>@ali_silarbi</div>
           </router-link>
