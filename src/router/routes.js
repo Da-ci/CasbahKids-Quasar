@@ -35,10 +35,10 @@ const routes = [
 
     ],
   },
-  // {
-  //    path: '/landing', 
-  //    component: () => import('pages/Landing/Index.html') 
-  // },
+  {
+     path: '/landing', 
+     component: () => import('pages/Landing.vue') 
+  },
 
   // Always leave this as last one,
   // but you can also remove it
