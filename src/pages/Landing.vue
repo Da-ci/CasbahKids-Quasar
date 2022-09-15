@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="body" >
         <div class="navbar">
             <div class="navbar-container">
                 <span style="margin-top: 5px;">logo</span>
@@ -9,32 +9,67 @@
                 </div>
             </div>
         </div>
-        <div class="background"></div>
-        <!-- <div class="background">
-            <img src="../statics/Landing/background.png" />
-        </div> -->
+        <!-- <div class="background"></div> -->
+        <div class="background">
+            <div class="background-container">
+                <img class="img" src="../statics/Landing/background.png" />
+            </div>
+        </div>
         <div class="fragment-1">
             <div class="fragment_box">
-                <div class="fragment_left_box">
+                <div class="fragment_image_box">
                     <img style="width: 100%; height: 100%;" src="../statics/Landing/iphone-img.png" />
                 </div>
-                <div class="fragment_right_box">
+                <div class="fragment_text_box">
                     <div class="fragment_text">
-                        <div class="fragment_text-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                        <div class="fragment_text-2">Lorem ipsum dolor sit amet consecteturs.</div>
+                        <div class="fragment_text-1">Découvrez des centaines d'histoires!</div>
+                        <div class="fragment_text-2">Des histoires venu du coeur de la Casbah</div>
                     </div>
                     <div class="app_download">
-                        <div>
-                            <img src="../statics/Landing/app-store.png" />
+                        <div class="q-mr-md">
+                            <img style="width: 100%; height: 100%;" src="../statics/Landing/app-store.png" />
                         </div>
                         <div>
-                            <img src="../statics/Landing/google-play.png" />
+                            <img style="width: 100%; height: 100%;" src="../statics/Landing/google-play.png" />
                         </div>
                     </div>
                 </div>
 
             </div>
+        </div>
 
+        <div class="fragment-2">
+            <div class="fragment_box">
+                <div class="fragment_image_box">
+                    <img class="img-example" src="../statics/Landing/example-3.png" />
+                </div>
+                <div class="fragment_text_box">
+                    <div class="fragment_text">
+                        <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
+                        <div class="fragment_text-example-2">Des histoires venu du coeur de la Casbah</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fragment-2">
+            <div class="fragment_box">
+                <div class="fragment_text_box">
+                    <div class="fragment_text">
+                        <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
+                        <div class="fragment_text-example-2">Des histoires venu du coeur de la Casbah</div>
+                    </div>
+                </div>
+                <div class="fragment_image_box">
+                    <img class="img-example" src="../statics/Landing/example-3.png" />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta odio quisquam repellat reiciendis,
+            accusantium molestias suscipit reprehenderit, quas aliquam nesciunt ab. Tenetur nemo quibusdam voluptas sunt
+            quam iure amet sequi?
         </div>
     </div>
 </template>
@@ -66,68 +101,62 @@
 }
 
 .background {
-    position: relative
-}
-
-.background::before{
-    content: ""; /* empty but necessary */
-    background-image: url('../statics/Landing/background.png');
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
     position: absolute;
-    top: -270px;
     z-index: -1;
-    transform: scale(1.2);
-    overflow: hide;
-}
-
-/* .background{
-    position: absolute;
-    top: -260px;
-    z-index: -1;
+    overflow: clip;
     width: 100%;
     height: 100%;
+    top: 0px;
 }
 
-.background > img{
-    background-position: cover;
+.background-container {
+    transform: scale(2.3);
+}
+
+.img {
+    margin-top: 100px;
     max-width: 100%;
-    height: 100%;
-    transform: rotate(-5deg);
-    background-size: cover; 
-
-} */ 
-
-.fragment-1 {
-    /* background-color: red; */
+    height: 330px;
+    transform: rotate(-12deg);
 }
 
 .fragment_box {
     /* background-color: green; */
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.fragment_left_box {
+.fragment_image_box {
     margin: auto;
     padding: 10px;
-    margin: auto;
+    /* background-color: blue; */
 }
 
-.fragment_right_box {
+.fragment_text_box {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    margin: auto;
-    margin-top: 15%;
+    padding: 15px;
+    /* background-color: red; */
 }
 
 .fragment_text {
     display: flex;
     flex-direction: column;
+    /* background-color: cyan; */
+}
+
+.fragment_text-1 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.fragment_text-2 {
+    margin-bottom: 15px;
+    font-weight: 300;
+    color: #666666;
 }
 
 .app_download {
@@ -135,19 +164,132 @@
     flex-direction: row;
 }
 
+.fragment-2 {
+    max-width: 1400px;
+    margin: auto;
+    margin-bottom: 100px;
+    margin-top: 350px;
+    overflow: hidden;
+    border-bottom: 1px solid #dee2e6;
+
+}
+
+.fragment_text-example-1 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.fragment_text-example-2 {
+    margin-bottom: 15px;
+    font-weight: 300;
+    color: #666666;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    .fragment_image_box {
+        width: 100%;
+    }
+
     .fragment_text-1 {
+        font-size: 30px;
+    }
+
+    .fragment_text-2 {
         font-size: 18px;
     }
+
+    .fragment-2 {
+        height: auto;
+    }
+
+    .img-example {
+        width: 70%;
+        height: 70%;
+        transform: translateX(-50%);
+        margin-left: 50%;
+    }
+
+    .fragment_text-example-1 {
+        font-size: 30px;
+    }
+
+    .fragment_text-example-2 {
+        font-size: 18px;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    .fragment_image_box {
+        width: 450px;
+    }
+
+    .fragment_text_box {
+        width: 450px;
+        margin: auto;
+    }
+
+    .fragment_text-1 {
+        font-size: 32px;
+    }
+
+    .fragment_text-2 {
+        font-size: 20px;
+    }
+
+    .img-example {
+        width: 75%;
+        height: 75%;
+        transform: translateX(-50%);
+        margin-left: 50%;
+    }
+
+    .fragment_text-example-1 {
+        font-size: 32px;
+    }
+
+    .fragment_text-example-2 {
+        font-size: 20px;
+    }
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) {
+    .fragment_image_box {
+        width: 50%;
+    }
+
+    .fragment_text_box {
+        width: 50%;
+        margin: auto;
+    }
+
+    .fragment_text-1 {
+        font-size: 52px;
+    }
+
+    .fragment_text-2 {
+        font-size: 24px;
+    }
+
+    .img-example {
+        width: 80%;
+        height: 80%;
+        transform: translateX(-50%);
+        margin-left: 50%;
+    }
+
+    .fragment_text-example-1 {
+        font-size: 46px;
+    }
+
+    .fragment_text-example-2 {
+        font-size: 24px;
+    }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -155,19 +297,33 @@
         flex-direction: row;
     }
 
-    .fragment_left_box {
-        max-width: 100%;
-        max-height: 100%;
-        margin: auto;
+    .fragment_image_box {
+        width: 50%;
     }
+
+    .fragment_text_box {
+        margin-top: 100px;
+    }
+
+    .fragment_text,
+    .app_download {
+        margin-left: 80px;
+    }
+
+    .fragment-2 {
+        height: 600px;
+    }
+
+    .img-example {
+        width: 75%;
+        height: 75%;
+        transform: translateX(-50%);
+        margin-left: 50%;
+    }
+    
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-    .fragment_left_box {
-        max-width: 70%;
-        max-height: 70%;
-        margin: auto;
-    }
-}
+@media only screen and (min-width: 1200px) {}
 </style>
