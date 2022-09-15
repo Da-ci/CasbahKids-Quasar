@@ -5,7 +5,7 @@
                 <span style="margin-top: 5px;">logo</span>
                 <div class="navbar-buttons">
                     <span style="margin-top: 5px;">Support</span>
-                    <q-btn color="primary q-ml-lg" label="Primary" />
+                    <q-btn color="primary q-ml-lg" label="Se connecter" to="/login" />
                 </div>
             </div>
         </div>

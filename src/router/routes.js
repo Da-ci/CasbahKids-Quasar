@@ -3,7 +3,11 @@ const routes = [
   {
     path: '/',
     alias: '',
-    redirect: '/login',
+    redirect: '/landing',
+  },
+  {
+    path: '/landing',
+    component: () => import('pages/Landing.vue')
   },
   {
     path: '/login',
@@ -35,10 +39,7 @@ const routes = [
 
     ],
   },
-  {
-     path: '/landing', 
-     component: () => import('pages/Landing.vue') 
-  },
+
 
   // Always leave this as last one,
   // but you can also remove it
