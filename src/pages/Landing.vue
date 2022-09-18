@@ -213,77 +213,51 @@
 
         </div>
 
-        <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, sint est! Enim debitis fuga nulla
-            voluptatibus assumenda ex eius, nisi, consequatur quisquam explicabo ipsam qui sequi ut quas temporibus
-            nesciunt!
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo deserunt ex officiis itaque? Ipsam
-            nesciunt quasi facilis. Repellendus ipsa autem corrupti vitae facilis. Itaque non alias, recusandae
-            reprehenderit voluptas maiores?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad praesentium debitis molestiae, modi neque
-            numquam, perspiciatis architecto nostrum dolores labore perferendis exercitationem suscipit nesciunt
-            iusto unde tempora eveniet. Dolores, sapiente.
-        </div>
+        <div class="fragment-4">
+            <div class="frag-4_title">
+                IL EST TEMPS DE TÉLÉCHARGER L'APPLICATION
+            </div>
+            <div class="frag-4_content">
+                Rejoignez plus de 2000 utilisateurs satisfaits et partagez votre histoire !
+            </div>
 
+            <div class="app_download" style="margin: auto;">
+                <div class="q-mr-md">
+                    <img style="width: 100%; height: 100%;" src="../statics/Landing/app-store.png" />
+                </div>
+                <div>
+                    <img style="width: 100%; height: 100%;" src="../statics/Landing/google-play.png" />
+                </div>
+            </div>
+
+        </div>
+        (IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)
+        
 
 
     </div>
 </template>
 
 <style scoped>
-.commentary_box {
-    /* width: 100%; */
-    height: 340px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 14%);
-    padding: 40px;
-}
-
-.commentary_text {
-    font-weight: 400;
-    font-size: 20px;
-    width: 100%;
-    height: 180px;
-}
-
-.commentary_info {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    height: 80px;
-    width: 260px;
-    /* background-color: red; */
-}
-
-.img_container {
-    margin-top: 25px;
-    width: 50px;
-    height: 50px;
-}
-
-.info_container {
+.fragment-4 {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 300px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
-    margin-left: 10px;
 }
 
-.info_container-text-1 {
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-.info_container-text-2 {
+.frag-4_title {
     font-size: 14px;
-    margin-top: 4px;
 }
 
-.commentary_container {
-    display: grid;
-    grid-gap: 15px;
-    padding: 15px;
+.frag-4_content {
+    font-size: 56px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 
@@ -419,6 +393,61 @@
     font-weight: 600;
 }
 
+.commentary_box {
+    /* width: 100%; */
+    height: 340px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 14%);
+    padding: 40px;
+}
+
+.commentary_text {
+    font-weight: 400;
+    font-size: 20px;
+    width: 100%;
+    height: 180px;
+}
+
+.commentary_info {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    width: 260px;
+    /* background-color: red; */
+}
+
+.img_container {
+    margin-top: 25px;
+    width: 50px;
+    height: 50px;
+}
+
+.info_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.info_container-text-1 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.info_container-text-2 {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.commentary_container {
+    display: grid;
+    grid-gap: 15px;
+    padding: 15px;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -476,6 +505,17 @@
         height: 400px;
     }
 
+    .frag-4_title {
+        font-size: 14px;
+    }
+
+    .frag-4_content {
+        font-size: 40px;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -521,7 +561,8 @@
     }
 
     .fragment-3_title {
-        margin-top: 25px;
+        margin-top: 45px;
+        margin-bottom: 35px;
         font-size: 40px;
     }
 
@@ -534,7 +575,7 @@
     }
 
     .img-2 {
-        height: 600px;
+        height: 730px;
     }
 }
 
@@ -577,7 +618,8 @@
     }
 
     .fragment-3_title {
-        margin-top: 35px;
+        margin-top: 55px;
+        margin-bottom: 40px;
         font-size: 45px;
     }
 
@@ -614,7 +656,8 @@
     }
 
     .fragment-3_title {
-        margin-top: 55px;
+        margin-top: 65px;
+        margin-bottom: 45px;
         font-size: 50px;
     }
 
