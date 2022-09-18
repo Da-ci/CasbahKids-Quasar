@@ -41,7 +41,7 @@
         <div class="fragment-2">
             <div class="fragment_box">
                 <div class="fragment_image_box">
-                    <img class="img-example" src="../statics/Landing/example-3.png" />
+                    <img class="img-example" src="../statics/Landing/example-1.png" />
                 </div>
                 <div class="fragment_text_box">
                     <div class="fragment_text">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="fragment_image_box">
-                    <img class="img-example" src="../statics/Landing/example-3.png" />
+                    <img class="img-example" src="../statics/Landing/example-2.png" />
                 </div>
             </div>
         </div>
@@ -231,9 +231,25 @@
             </div>
 
         </div>
-        (IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)(IL RESTE LE FOOTER)
-        
 
+        <div class="footer_container">
+            <div class="footer" >
+                <div>
+                    <span>Logo</span>
+                </div>
+
+                <div>
+                    <span>Button</span>
+                    <span>Button</span>
+                    <span>Button</span>
+                    <span>Button</span>
+                </div>
+
+                <div>
+                    Copyright
+                </div>
+            </div>
+        </div>
 
     </div>
 </template>
