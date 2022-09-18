@@ -53,7 +53,7 @@
         </div>
 
         <div class="fragment-2">
-            <div class="fragment_box">
+            <div class="fragment_box fragment_box_reverse">
                 <div class="fragment_text_box">
                     <div class="fragment_text">
                         <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
@@ -66,10 +66,22 @@
             </div>
         </div>
 
-        <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta odio quisquam repellat reiciendis,
-            accusantium molestias suscipit reprehenderit, quas aliquam nesciunt ab. Tenetur nemo quibusdam voluptas sunt
-            quam iure amet sequi?
+        <div class="fragment-2" style="margin-bottom: 500px;">
+            <div class="fragment_box">
+                <div class="fragment_image_box">
+                    <img class="img-example" src="../statics/Landing/example-3.png" />
+                </div>
+                <div class="fragment_text_box">
+                    <div class="fragment_text">
+                        <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
+                        <div class="fragment_text-example-2">Des histoires venu du coeur de la Casbah</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fragment-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore deleniti voluptatum tempore exercitationem quidem amet veniam minus, esse ex dolorum sit totam itaque provident praesentium iusto. Earum ullam deleniti corporis.
         </div>
     </div>
 </template>
@@ -110,18 +122,17 @@
 }
 
 .background-container {
-    transform: scale(2.3);
+    transform: scale(2.4);
 }
 
 .img {
     margin-top: 100px;
     max-width: 100%;
     height: 330px;
-    transform: rotate(-12deg);
+    transform: rotate(-10deg);
 }
 
 .fragment_box {
-    /* background-color: green; */
     max-width: 1400px;
     margin: auto;
     display: flex;
@@ -167,8 +178,8 @@
 .fragment-2 {
     max-width: 1400px;
     margin: auto;
-    margin-bottom: 100px;
-    margin-top: 350px;
+    /* margin-bottom: 100px; */
+    /* margin-top: 350px; */
     overflow: hidden;
     border-bottom: 1px solid #dee2e6;
 
@@ -217,6 +228,10 @@
 
     .fragment_text-example-2 {
         font-size: 18px;
+    }
+
+    .fragment_box_reverse{
+        flex-direction: column-reverse;
     }
 
 }
