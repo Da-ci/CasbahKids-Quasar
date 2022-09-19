@@ -2,9 +2,11 @@
     <div class="body">
         <div class="navbar">
             <div class="navbar-container">
-                <span style="margin-top: 5px;">logo</span>
+                <div class="logo">
+                    <img src="../statics/logo.png" />
+                </div>
                 <div class="navbar-buttons">
-                    <span style="margin-top: 5px;">Support</span>
+                    <span style="margin-top: 10px; margin-right: 20px;">Support</span>
                     <q-btn color="primary q-ml-lg" label="Se connecter" to="/login" />
                 </div>
             </div>
@@ -27,10 +29,10 @@
                     </div>
                     <div class="app_download">
                         <div class="q-mr-md">
-                            <img style="width: 100%; height: 100%;" src="../statics/Landing/app-store.png" />
+                            <img style="width: 100%; height: 60px;" src="../statics/Landing/app-store.png" />
                         </div>
                         <div>
-                            <img style="width: 100%; height: 100%;" src="../statics/Landing/google-play.png" />
+                            <img style="width: 100%; height: 60px;" src="../statics/Landing/google-play.png" />
                         </div>
                     </div>
                 </div>
@@ -223,60 +225,37 @@
 
             <div class="app_download" style="margin: auto;">
                 <div class="q-mr-md">
-                    <img style="width: 100%; height: 100%;" src="../statics/Landing/app-store.png" />
+                    <img style="width: 100%; height: 60px;" src="../statics/Landing/app-store.png" />
                 </div>
                 <div>
-                    <img style="width: 100%; height: 100%;" src="../statics/Landing/google-play.png" />
+                    <img style="width: 100%; height: 60px;" src="../statics/Landing/google-play.png" />
                 </div>
             </div>
 
         </div>
 
         <div class="footer_container">
-            <div class="footer" >
-                <div>
-                    <span>Logo</span>
+            <div class="footer">
+                <div class="logo">
+                    <img src="../statics/logo.png" />
                 </div>
-
-                <div>
-                    <span>Button</span>
-                    <span>Button</span>
-                    <span>Button</span>
-                    <span>Button</span>
+                <div class="footer_buttons">
+                    <span>A propos</span>
+                    <span>Carriere</span>
+                    <span>Recrutement</span>
+                    <span>Exemple</span>
                 </div>
-
-                <div>
-                    Copyright
+                <div class="footer_copyright">
+                    Meteor Dash 2022
                 </div>
             </div>
+
         </div>
 
     </div>
 </template>
 
 <style scoped>
-.fragment-4 {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-    margin-bottom: 300px;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-}
-
-.frag-4_title {
-    font-size: 14px;
-}
-
-.frag-4_content {
-    font-size: 56px;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 50px;
-}
-
-
 .body {
     width: 100%;
     height: 100vh;
@@ -300,6 +279,8 @@
 .navbar-buttons {
     display: flex;
     flex-direction: row;
+    height: 30px;
+    margin-top: 25px;
 }
 
 .background-1 {
@@ -369,7 +350,6 @@
     margin: auto;
     overflow: hidden;
     border-bottom: 1px solid #dee2e6;
-
 }
 
 .fragment_text-example-1 {
@@ -464,6 +444,68 @@
     padding: 15px;
 }
 
+.fragment-4 {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.frag-4_title {
+    font-size: 14px;
+}
+
+.frag-4_content {
+    font-size: 56px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.footer_container {
+    width: 100%;
+    max-width: 1250px;
+    height: 90px;
+    margin: auto;
+    border-top: 1px solid #dee2e6;
+
+}
+
+.footer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_buttons {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    /* transform: translateX(+100px); */
+    font-weight: 600;
+
+}
+
+.footer_copyright {
+    margin-right: 30px;
+    font-weight: 500;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+}
+
+.logo>img {
+    height: 100%;
+    width: 100%;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -532,6 +574,24 @@
         margin-bottom: 50px;
     }
 
+    .footer_container {
+        height: 160px;
+        width: 80%;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer_buttons {
+        transform: none;
+    }
+
+    .footer_copyright {
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -593,6 +653,26 @@
     .img-2 {
         height: 730px;
     }
+
+    .footer_container {
+        height: 160px;
+        width: 80%;
+
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer_buttons {
+        transform: none;
+    }
+
+    .footer_copyright {
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -639,6 +719,27 @@
         font-size: 45px;
     }
 
+    .footer_container {
+        height: 120px;
+        width: 90%;
+
+    }
+
+    .footer {
+        flex-direction: row;
+    }
+
+    .footer_buttons {
+        transform: translateX(5%);
+        flex-wrap: wrap;
+        width: 300px;
+    }
+
+    .footer_copyright {
+        margin-right: 30px;
+        margin-bottom: 10px;
+    }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -679,6 +780,23 @@
 
     .commentary_container {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .footer_container {
+        height: 120px;
+    }
+
+    .footer {
+        flex-direction: row;
+    }
+
+    .footer_buttons {
+        transform: translateX(+70px);
+    }
+
+    .footer_copyright {
+        margin-right: 30px;
+        margin-bottom: 10px;
     }
 
 }
