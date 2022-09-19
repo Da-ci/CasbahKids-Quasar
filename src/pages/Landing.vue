@@ -246,7 +246,7 @@
                     <span>Exemple</span>
                 </div>
                 <div class="footer_copyright">
-                    Meteor Dash 2022
+                    © Meteor Dash 2022 All right reserved.
                 </div>
             </div>
 
@@ -256,6 +256,19 @@
 </template>
 
 <style scoped>
+.fragment_text-1,
+.fragment_text-example-1,
+.frag-4_title,
+.frag-4_content {
+    color: #1f1f1f;
+}
+
+.fragment_text-2,
+.frag-4_title {
+    color: #222f3f;
+}
+
+
 .body {
     width: 100%;
     height: 100vh;
@@ -394,8 +407,9 @@
     height: 340px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 14%);
     padding: 40px;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 14%);
+
 }
 
 .commentary_text {
@@ -418,6 +432,10 @@
     margin-top: 25px;
     width: 50px;
     height: 50px;
+}
+
+.img-example {
+    filter: drop-shadow(0px 10px 20px rgb(0 0 0 / 20%));
 }
 
 .info_container {
@@ -456,6 +474,9 @@
 
 .frag-4_title {
     font-size: 14px;
+    font-weight: 600;
+    color: #666666;
+    letter-spacing: 2px;
 }
 
 .frag-4_content {
@@ -488,12 +509,15 @@
     justify-content: space-between;
     /* transform: translateX(+100px); */
     font-weight: 600;
+    color: #333333;
+
 
 }
 
 .footer_copyright {
     margin-right: 30px;
     font-weight: 500;
+    color: #666666;
 }
 
 .logo {
