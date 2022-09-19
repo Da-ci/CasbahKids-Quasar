@@ -326,7 +326,7 @@
 .fragment_image_box {
     margin: auto;
     padding: 10px;
-    /* background-1-color: blue; */
+    filter: drop-shadow(0px 30px 20px rgb(0 0 0 / 8%));
 }
 
 .fragment_text_box {
@@ -435,7 +435,7 @@
 }
 
 .img-example {
-    filter: drop-shadow(0px 10px 20px rgb(0 0 0 / 20%));
+    filter: drop-shadow(0px 10px 20px rgb(0 0 0 / 5%));
 }
 
 .info_container {
