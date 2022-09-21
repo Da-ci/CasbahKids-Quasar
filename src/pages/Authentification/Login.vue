@@ -10,9 +10,9 @@
                         <div class="row">
                             <q-card flat class="q-pa-lg shadow-1 border-radius">
                                 <q-card-section>
-                                    <q-input filled outlined clearable color="indigo-1" label-color="white"
+                                    <q-input filled standout outlined clearable color="white" label-color="white"
                                         ref="emailRef" v-model="email" type="email" :rules="emailRules" lazy-rules
-                                        label="Email" class="q-mb-lg" />
+                                        label="Email" class="q-mb-lg"/>
 
                                     <q-input filled outlined clearable color="indigo-1" label-color="indigo-1"
                                         ref="passwordRef" v-model="password" :rules="passwordRules" type="password"
@@ -45,6 +45,8 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+
+import "../../css/Authentification/authentification.scss"
 
 export default {
     setup() {
@@ -100,6 +102,11 @@ export default {
 </script>
 
 <style scoped>
+.q-field__native, .q-field__prefix, .q-field__suffix, .q-field__input
+{
+    color: white !important;
+}
+
 .q-card {
     width: 360px;
     background: linear-gradient(135deg,

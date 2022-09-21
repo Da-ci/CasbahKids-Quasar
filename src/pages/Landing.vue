@@ -46,7 +46,10 @@
                     <img class="img-example" src="../statics/Landing/example-1.png" />
                 </div>
                 <div class="fragment_text_box">
-                    <div class="fragment_text">
+                    <!-- <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+                        <q-btn key="button" color="secondary" icon="mail" label="Email" />
+                    </transition> -->
+                    <div class="fragment_text" transition-show="jump-down" transition-hide="jump-up">
                         <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
                         <div class="fragment_text-example-2">Des histoires venu du coeur de la Casbah</div>
                     </div>
@@ -54,10 +57,12 @@
             </div>
         </div>
 
+
+
         <div class="fragment-2">
             <div class="fragment_box fragment_box_reverse">
                 <div class="fragment_text_box">
-                    <div class="fragment_text">
+                    <div class="fragment_text" transition-show="flip-up" transition-hide="flip-down">
                         <div class="fragment_text-example-1">Découvrez des centaines d'histoires!</div>
                         <div class="fragment_text-example-2">Des histoires venu du coeur de la Casbah</div>
                     </div>
@@ -89,7 +94,6 @@
         </div>
 
         <div class="fragment-3">
-
             <div class="fragment_box ">
                 <div class="fragment-3_title">
                     <span>Les auditeurs aiment CasbahKids!</span>
@@ -156,7 +160,7 @@
                 </div>
 
                 <div>
-                    <div class="commentary_box">
+                    <div class="commentary_box" transition-show="jump-down" transition-hide="jump-up">
                         <div class="commentary_text">
                             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima dolor sit quaerat alias
                             perspiciatis omnis
@@ -254,6 +258,10 @@
 
     </div>
 </template>
+
+<script>
+
+</script>
 
 <style scoped>
 .fragment_text-1,

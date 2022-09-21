@@ -8,7 +8,7 @@
   .card {
     min-width: 254px;
     min-height: 254px;
-    max-width: 254px;
+    /* max-width: 254px; */
     max-height: 254px;
     position: relative;
     background: #ff930f;

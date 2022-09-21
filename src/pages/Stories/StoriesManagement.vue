@@ -137,13 +137,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card {
     width: 100%;
     height: 254px;
     position: relative;
-    /* background: #ff930f; */
-    /* background: linear-gradient(to top, #ff930f 0%, #fffa5c 100%); */
     border-radius: 4px;
     background-image: url("../../statics/story.jpg");
     background-repeat: no-repeat;

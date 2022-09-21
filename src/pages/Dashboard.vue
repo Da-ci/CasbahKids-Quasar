@@ -6,7 +6,7 @@
             <q-separator inset />
         </q-card>
         <q-card flat class="my-card q-pa-xs"
-            style="overflow-x: scroll; padding-left: 185px; border-top-left-radius: 0px; border-top-right-radius: 0px;">
+            style=" overflow-x: scroll; padding-left: 185px; border-top-left-radius: 0px; border-top-right-radius: 0px;">
             <div class=" q-pa-lg flex_container">
                 <div v-for="index in 10" class="card q-ma-xs" style="width: 100%">
                     <div class="card-info">
