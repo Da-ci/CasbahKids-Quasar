@@ -6,7 +6,7 @@
             </div>
             <q-card flat class="my-card q-pa-lg ">
 
-                <q-form @submit="onSubmit">
+                <q-form @submit="onSubmit()">
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <div class="q-pa-md">
@@ -78,16 +78,23 @@
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
+import axios from 'axios'
 
 export default {
     setup() {
         const $q = useQuasar()
 
-        const first_name = ref(null)
-        const last_name = ref(null)
-        const email = ref(null)
-        const email_confirmation = ref(null)
-        const password = ref(null)
+        // const first_name = ref(null)
+        // const last_name = ref(null)
+        // const email = ref(null)
+        // const email_confirmation = ref(null)
+        // const password = ref(null)
+
+        const first_name = ref('Ali')
+        const last_name = ref('Silarbi')
+        const email = ref('ali.silarbi00@gmail.com')
+        const email_confirmation = ref('ali.silarbi00@gmail.com')
+        const password = ref('8689696896')
 
         const first_nameRules = [val => val && val.length > 0 || 'Saisissez votre prénom']
         const last_nameRules = [val => val && val.length > 0 || 'Saisissez votre nom']
@@ -109,22 +116,43 @@ export default {
             passwordRules,
 
             onSubmit() {
+                // if (email.value !== email_confirmation.value) {
+                //     $q.notify({
+                //         color: 'red-5',
+                //         textColor: 'white',
+                //         icon: 'warning',
+                //         message: 'Veuillez confirmez votre email'
+                //     })
+                // } else {
+                //     $q.notify({
+                //         color: 'green-4',
+                //         textColor: 'white',
+                //         icon: 'cloud_done',
+                //         message: 'Vous etes enregistré'
+                //     })
+                // }
+                this.register()
+            },
+            async register() {
 
-                if (email.value !== email_confirmation.value) {
-                    $q.notify({
-                        color: 'red-5',
-                        textColor: 'white',
-                        icon: 'warning',
-                        message: 'Veuillez confirmez votre email'
-                    })
-                } else {
-                    $q.notify({
-                        color: 'green-4',
-                        textColor: 'white',
-                        icon: 'cloud_done',
-                        message: 'Vous etes enregistré'
-                    })
+                const headers = {
+                    'Accept' : 'application/json'
                 }
+
+                const data = {
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    email: this.email,
+                    password: this.password
+                }
+
+                axios.post('http://127.0.0.1:8000/api/register', data, headers)
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.data);
+                    });
             }
 
         }
@@ -134,7 +162,27 @@ export default {
         isValidEmail() {
             if (email === this.email_confirmation)
                 return true
+        },
+        async Test() {
+            let config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }
+
+            axios.post('http://127.0.0.1:8000/api/test', {
+                config,
+                firstName: 'Fred',
+                lastName: 'Flintstone'
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
+
     }
 
 }

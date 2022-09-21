@@ -1,5 +1,4 @@
 <template>
-
     <q-page :class=windowSize() style="max-width: 100%;">
         <q-card flat style="border-radius: 0px;">
             <h2 class="flex flex-center text-bold text-h5 q-pa-md">Les dernieres histoires</h2>
@@ -29,8 +28,8 @@
     </q-page>
 </template>
   
-  <script>
-import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue'
+<script>
+import { computed, ref, nextTick } from 'vue'
 import '../css/dashboard.css'
 
 const columns = [
@@ -160,7 +159,6 @@ const seed = [
     }
 ]
 
-// we generate lots of rows here
 let allRows = []
 for (let i = 0; i < 1000; i++) {
     allRows = allRows.concat(seed.slice(0).map(r => ({ ...r })))
@@ -213,13 +211,13 @@ export default {
                         })
                     }, 500)
                 }
-            }
-
+            },
         }
     },
     data() {
         return {
-            windowWidth: window.innerWidth
+            windowWidth: window.innerWidth,
+            joke: '',
         }
     },
     mounted() {
@@ -239,22 +237,22 @@ export default {
                 return 'q-pa-lg'
             else if (this.windowWidth > 1920)
                 return 'q-pa-xl'
-        }
+        },
     }
 }
 </script>
   
   
-  <style scoped>
-  /* @import '../css/dashboard_latest_stories.css'; */
+<style scoped>
+/* @import '../css/dashboard_latest_stories.css'; */
+
+.flex_container {
+    display: flex;
+    justify-content: space-around;
+}
+</style>
   
-  .flex_container {
-      display: flex;
-      justify-content: space-around;
-  }
-  </style>
-  
-  <style lang="sass">
+<style lang="sass">
   .my-sticky-dynamic
     /* height or max-height is important */
     height: 410px
