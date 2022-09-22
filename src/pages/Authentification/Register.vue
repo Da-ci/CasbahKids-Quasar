@@ -5,7 +5,11 @@
                 <h5 class="text-h5 text-white q-my-md">Créez un compte</h5>
             </div>
             <q-card flat class="my-card q-pa-lg ">
-
+                <div>
+                    <ul v-for="key in form_data">
+                        <li>{{ key }}</li>
+                    </ul>
+                </div>
                 <q-form @submit="onSubmit()">
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
@@ -102,7 +106,6 @@ export default {
         const email_confirmationRules = [val => !val === email || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ || 'Saisissez la confirmation de votre email']
         const passwordRules = [val => val && val.length > 8 || 'Votre mot de passe doit contenir au moins 8 caracteres']
 
-
         return {
             first_name,
             last_name,
@@ -114,46 +117,12 @@ export default {
             emailRules,
             email_confirmationRules,
             passwordRules,
-
-            onSubmit() {
-                // if (email.value !== email_confirmation.value) {
-                //     $q.notify({
-                //         color: 'red-5',
-                //         textColor: 'white',
-                //         icon: 'warning',
-                //         message: 'Veuillez confirmez votre email'
-                //     })
-                // } else {
-                //     $q.notify({
-                //         color: 'green-4',
-                //         textColor: 'white',
-                //         icon: 'cloud_done',
-                //         message: 'Vous etes enregistré'
-                //     })
-                // }
-                this.register()
-            },
-            async register() {
-
-                const headers = {
-                    'Accept' : 'application/json'
-                }
-
-                const data = {
-                    first_name: this.first_name,
-                    last_name: this.last_name,
-                    email: this.email,
-                    password: this.password
-                }
-
-                axios.post('http://127.0.0.1:8000/api/register', data, headers)
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error.response.data);
-                    });
-            }
+        }
+    },
+    data() {
+        return {
+            form_data: '',
+            title: '',
 
         }
     },
@@ -163,25 +132,56 @@ export default {
             if (email === this.email_confirmation)
                 return true
         },
-        async Test() {
-            let config = {
-                headers: {
-                    'Accept': 'application/json'
-                }
+        onSubmit() {
+            // if (email.value !== email_confirmation.value) {
+            //     $q.notify({
+            //         color: 'red-5',
+            //         textColor: 'white',
+            //         icon: 'warning',
+            //         message: 'Veuillez confirmez votre email'
+            //     })
+            // } else {
+            //     $q.notify({
+            //         color: 'green-4',
+            //         textColor: 'white',
+            //         icon: 'cloud_done',
+            //         message: 'Vous etes enregistré'
+            //     })
+            // }
+            this.register()
+        },
+        async register() {
+
+            const headers = {
+                'Accept': 'application/json'
             }
 
-            axios.post('http://127.0.0.1:8000/api/test', {
-                config,
-                firstName: 'Fred',
-                lastName: 'Flintstone'
-            })
+            const data = {
+                // first_name: this.first_name,
+                // last_name: this.last_name,
+                // email: this.email,
+                // email_confirmation: this.email_confirmation,
+                // password: this.password
+            }
+
+            axios.post('http://127.0.0.1:8000/api/register', data, headers)
                 .then(function (response) {
                     console.log(response);
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch((error) => {
+                    // this.form_data = error.response.data.errors
+                    let obj = error.response.data.errors
+
+                    const key = Object.keys(obj)
+                    const values = Object.values(obj)
+                    
+                    values.map((element) =>{
+                        console.log(element)
+                    })
+
+
                 });
-        }
+        },
 
     }
 
