@@ -5,8 +5,8 @@
                 <h5 class="text-h5 text-white q-my-md">Créez un compte</h5>
             </div>
             <q-card flat class="my-card q-pa-lg ">
-                <div>
-                    <ul v-for="key in form_data">
+                <div class="form_errors">
+                    <ul v-for="key in form_errors">
                         <li>{{ key }}</li>
                     </ul>
                 </div>
@@ -121,7 +121,7 @@ export default {
     },
     data() {
         return {
-            form_data: '',
+            form_errors: '',
             title: '',
 
         }
@@ -169,15 +169,29 @@ export default {
                     console.log(response);
                 })
                 .catch((error) => {
-                    // this.form_data = error.response.data.errors
                     let obj = error.response.data.errors
 
-                    const key = Object.keys(obj)
-                    const values = Object.values(obj)
-                    
-                    values.map((element) =>{
-                        console.log(element)
-                    })
+                    console.log(obj.email)
+
+                    // let errors = Object.keys(obj)
+                    // let messages = Object.values(obj)
+
+                    // messages.forEach(function (messageArray, index) {
+                    //     messageArray.forEach(function (message) {
+                    //         messages[index] = message
+                    //     })
+                    // })
+                    // // console.log(messages)
+
+
+                    // errors.forEach(function (errorsArray, index){
+                    //     console.log(errorsArray)
+                    //     // messages.forEach(function (index){
+                    //     //     console.log(errorsArray)
+                    //     // })
+                    // })
+
+                    // // console.log(messages)
 
 
                 });
