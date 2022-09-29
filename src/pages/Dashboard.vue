@@ -31,6 +31,7 @@
 <script>
 import { computed, ref, nextTick } from 'vue'
 import '../css/dashboard.css'
+import axios from 'axios'
 
 const columns = [
     {
@@ -223,7 +224,8 @@ export default {
     mounted() {
         window.onresize = () => {
             this.windowWidth = window.innerWidth;
-        }
+        };
+
     },
     methods: {
         windowSize() {

@@ -5,9 +5,9 @@
                 <h5 class="text-h5 text-white q-my-md">Créez un compte</h5>
             </div>
             <q-card flat class="my-card q-pa-lg ">
-                <div class="form_errors">
-                    <ul v-for="key in form_errors">
-                        <li>{{ key }}</li>
+                <div class="form_errors text-red-5">
+                    <ul>
+                        <li v-for="error in form_errors"> {{ error[0] }}</li>
                     </ul>
                 </div>
                 <q-form @submit="onSubmit()">
@@ -84,6 +84,9 @@ import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import axios from 'axios'
 
+import "../../css/Authentification/authentification.scss"
+
+
 export default {
     setup() {
         const $q = useQuasar()
@@ -133,67 +136,38 @@ export default {
                 return true
         },
         onSubmit() {
-            // if (email.value !== email_confirmation.value) {
-            //     $q.notify({
-            //         color: 'red-5',
-            //         textColor: 'white',
-            //         icon: 'warning',
-            //         message: 'Veuillez confirmez votre email'
-            //     })
-            // } else {
-            //     $q.notify({
-            //         color: 'green-4',
-            //         textColor: 'white',
-            //         icon: 'cloud_done',
-            //         message: 'Vous etes enregistré'
-            //     })
-            // }
             this.register()
         },
         async register() {
-
             const headers = {
                 'Accept': 'application/json'
             }
 
             const data = {
-                // first_name: this.first_name,
-                // last_name: this.last_name,
-                // email: this.email,
-                // email_confirmation: this.email_confirmation,
-                // password: this.password
+                first_name: this.first_name,
+                last_name: this.last_name,
+                email: this.email,
+                email_confirmation: this.email_confirmation,
+                password: this.password
             }
 
             axios.post('http://127.0.0.1:8000/api/register', data, headers)
-                .then(function (response) {
+                .then((response) => {
+                    this.$q.notify({
+                        color: 'green-5',
+                        textColor: 'white',
+                        icon: 'announcement',
+                        message: 'Bravo ! Veuillez vous connecter maintenant'
+                    })
                     console.log(response);
+                    this.$router.push('/login')
                 })
                 .catch((error) => {
-                    let obj = error.response.data.errors
-
-                    console.log(obj.email)
-
-                    // let errors = Object.keys(obj)
-                    // let messages = Object.values(obj)
-
-                    // messages.forEach(function (messageArray, index) {
-                    //     messageArray.forEach(function (message) {
-                    //         messages[index] = message
-                    //     })
-                    // })
-                    // // console.log(messages)
-
-
-                    // errors.forEach(function (errorsArray, index){
-                    //     console.log(errorsArray)
-                    //     // messages.forEach(function (index){
-                    //     //     console.log(errorsArray)
-                    //     // })
-                    // })
-
-                    // // console.log(messages)
-
-
+                    if (error) {
+                        let obj = error.response.data.errors;
+                        this.form_errors = obj
+                        console.log(obj)
+                    }
                 });
         },
 
@@ -203,6 +177,13 @@ export default {
 </script>
 
 <style scoped>
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+    color: white !important;
+}
+
 .q-card {
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.1),

@@ -6,13 +6,19 @@
                     <div class="row">
                         <h5 class="text-h5 text-white q-my-md">Connection à Casbah Kids</h5>
                     </div>
+
                     <q-form @submit="onSubmit" class="q-gutter-md">
                         <div class="row">
                             <q-card flat class="q-pa-lg shadow-1 border-radius">
+                                <!-- <div class="form_errors text-red-5">
+                                    <ul>
+                                        <li v-if="form_errors"> {{ form_errors }}</li>
+                                    </ul>
+                                </div> -->
                                 <q-card-section>
                                     <q-input filled standout outlined clearable color="white" label-color="white"
                                         ref="emailRef" v-model="email" type="email" :rules="emailRules" lazy-rules
-                                        label="Email" class="q-mb-lg"/>
+                                        label="Email" class="q-mb-lg" />
 
                                     <q-input filled outlined clearable color="indigo-1" label-color="indigo-1"
                                         ref="passwordRef" v-model="password" :rules="passwordRules" type="password"
@@ -45,6 +51,7 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 import "../../css/Authentification/authentification.scss"
 
@@ -52,8 +59,8 @@ export default {
     setup() {
         const $q = useQuasar()
 
-        const email = ref(null)
-        const password = ref(null)
+        const email = ref('ali.silarbi00@gmail.com')
+        const password = ref('8689696896')
 
         const emailRules = [val => val && val.length > 0 || 'Saisissez votre email']
         const passwordRules = [val => val && val.length > 8 || 'Votre mot de passe doit contenir au moins au moins 8 caracteres']
@@ -67,43 +74,64 @@ export default {
             password,
             emailRules,
             passwordRules,
+        }
+    },
+    data() {
+        return {
+            form_errors: '',
+            title: '',
+        }
+    },
+    methods: {
+        onSubmit() {
+            // if (!localStorage.getItem('loginToken')) {
+            //     this.login()
+            // }else{
+            //     console.log("decrescendo")
+            // }
 
-            onSubmit() {
-                if (email.value === '' || password === '') {
-                    $q.notify({
+            if (!localStorage.getItem('loginToken')) {
+                this.login()
+            } else {
+                this.$router.push('/dashboard')
+            }
+
+        },
+        async login() {
+            const headers = {
+                'Accept': 'application/json'
+            }
+
+            const data = {
+                email: this.email,
+                password: this.password
+            }
+
+            axios.post('http://127.0.0.1:8000/api/login', data, headers)
+                .then(function (response) {
+                    localStorage.setItem('loginToken', response.data.token)
+                })
+                .catch((error) => {
+                    let obj = error.response.data.errors
+
+                    this.$q.notify({
                         color: 'red-5',
                         textColor: 'white',
                         icon: 'warning',
-                        message: 'Vous devez remplir tout les champs'
+                        message: obj
                     })
-                } else {
-                    if (email.value === 'casbah@casbah.com' && password.value === 'casbah@casbah.com') {
-                        router.push({ path: '/dashboard' })
-                        $q.notify({
-                            color: 'green-4',
-                            textColor: 'white',
-                            icon: 'cloud_done',
-                            message: 'Vous etes enregistré'
-                        })
-                    } else { 
-                        $q.notify({
-                            color: 'red-5',
-                            textColor: 'white',
-                            icon: 'warning',
-                            message: 'Vos coordonnées sont incorrectes !'
-                        })
-                    }
 
-                }
-            },
-        }
-    },
+                });
+        },
+    }
 }
 </script>
 
 <style scoped>
-.q-field__native, .q-field__prefix, .q-field__suffix, .q-field__input
-{
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
     color: white !important;
 }
 

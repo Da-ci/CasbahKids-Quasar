@@ -148,80 +148,51 @@
 </template>
 
 <script>
-import {defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
+import { defineComponent, ref } from 'vue'
 import { date } from 'quasar'
+import axios from 'axios'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
 
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-    EssentialLink,
-  },
   computed: {
     todaysDate() {
       const timeStamp = Date.now()
       return date.formatDate(timeStamp, 'dddd D MMMM')
     }
   },
-  
   setup() {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
   },
+  mounted() {
+    // this.checkAuth()
+  },
+  methods: {
+    async checkAuth() {
+      const headers = {
+        'Accept': 'application/json'
+      }
+
+      axios.post('http://127.0.0.1:8000/api/checkAuth', headers)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    },
+    
+  }
+
+
 
 })
 </script>
@@ -230,7 +201,5 @@ export default defineComponent({
 .header-image {
   height: 100%;
   z-index: -1;
-  // opacity: 0.2;
-  // filter: grayscale(100%);
 }
 </style>
