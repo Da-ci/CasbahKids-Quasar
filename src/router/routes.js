@@ -1,3 +1,4 @@
+import checkAuth from '../middleware/CheckAuth.js'
 
 const routes = [
   {
@@ -10,12 +11,14 @@ const routes = [
     component: () => import('pages/Landing.vue')
   },
   {
-    path: '/login',
     name: 'login',
     component: () => import('layouts/AuthentificationLayout.vue'),
     children: [
       { path: '/login', component: () => import('pages/Authentification/Login.vue') }
     ],
+    meta: {
+      middleware: checkAuth()
+    }
   },
   {
     path: '/register',

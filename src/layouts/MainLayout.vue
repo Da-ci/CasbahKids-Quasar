@@ -176,19 +176,20 @@ export default defineComponent({
     // this.checkAuth()
   },
   methods: {
-    async checkAuth() {
-      const headers = {
-        'Accept': 'application/json'
-      }
+    // async checkAuth() {
 
-      axios.post('http://127.0.0.1:8000/api/checkAuth', headers)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error)
-        });
-    },
+    //   const data = localStorage.getItem('loginToken')
+
+    //   console.log('console log main layout : ' + data)
+
+    //   axios.post('http://127.0.0.1:8000/api/checkAuth', data)
+    //     .then(function (response) {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error)
+    //     });
+    // },
     
   }
 

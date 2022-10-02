@@ -84,18 +84,7 @@ export default {
     },
     methods: {
         onSubmit() {
-            // if (!localStorage.getItem('loginToken')) {
-            //     this.login()
-            // }else{
-            //     console.log("decrescendo")
-            // }
-
-            if (!localStorage.getItem('loginToken')) {
-                this.login()
-            } else {
-                this.$router.push('/dashboard')
-            }
-
+            this.login()
         },
         async login() {
             const headers = {
@@ -108,8 +97,9 @@ export default {
             }
 
             axios.post('http://127.0.0.1:8000/api/login', data, headers)
-                .then(function (response) {
+                .then((response) => {
                     localStorage.setItem('loginToken', response.data.token)
+                    this.$router.push('/dashboard')
                 })
                 .catch((error) => {
                     let obj = error.response.data.errors
