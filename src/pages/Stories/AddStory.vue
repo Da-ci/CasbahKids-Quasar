@@ -36,29 +36,27 @@
 
                 <q-step :name="2" title="Ajouter une photo" icon="create_new_folder" :done="step > 2">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-8 col-xs-12">
                             <div class="q-pa-md">
-                                <q-img :src="'https://cdn.quasar.dev/img/parallax2.jpg'" class="border-radius">
+                                <input type="file" @change="onImageUploadChange" />
+                            </div>
+                            <div class="q-pa-md">
+                                <q-input v-model="story_description" :rules="story_descriptionRules" filled
+                                    type="textarea" label="Description de l'histoire" hint="Max 150 characters"
+                                    accept=".jpg, image/*"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12" :class="isMobile() ? 'order-last' : 'order-first' ">
+                            <div class="q-pa-md">
+                                <q-img :src="url ? url : 'https://cdn.quasar.dev/img/parallax2.jpg'" class="border-radius"
+                                    style="aspect-ratio: 1/1; width: 100%;">
                                     <div class="absolute-full text-subtitle2 flex flex-center">
                                         {{ story_title }}
                                     </div>
                                 </q-img>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xs-12">
-                            <div class="q-pa-md">
-                                <q-file outlined label="Ajouter une photo">
-                                    <template v-slot:prepend>
-                                        <q-icon name="attach_file" />
-                                    </template>
-                                </q-file>
-                            </div>
-                            <div class="q-pa-md">
-                                <q-input v-model="story_description" :rules="story_descriptionRules" filled
-                                    type="textarea" label="Description de l'histoire" hint="Max 150 characters"
-                                    accept=".jpg, image/*" />
-                            </div>
-                        </div>
+
                     </div>
                     <q-stepper-navigation>
                         <q-btn @click="step = 3" color="primary" label="Continue" />
@@ -157,7 +155,7 @@
 
 <script>
 import { useQuasar } from 'quasar'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { ref } from 'vue'
 import AudioRecorder from '../../components/AudioRecorder.vue'
 
 export default {
@@ -165,10 +163,11 @@ export default {
 
         const $q = useQuasar()
 
-        const story_title = ref('')
-        const story_category = ref('')
-        const story_description = ref('')
-        const story_content = ref('')
+        const story_title = ref('Title')
+        const story_category = ref('category')
+        const story_description = ref('description')
+        const story_content = ref('content')
+        const image = ref('')
 
         const story_titleRules = [val => val && val.length > 0 || 'Saisissez le titre de l\'histoire']
         const story_categoryRules = [val => val && val.length > 0 || 'Choisissez une catégorie']
@@ -193,39 +192,19 @@ export default {
             story_categoryRules,
             story_descriptionRules,
             story_contentRules,
+            image,
             tab: ref('mails'),
             splitterModel: ref(20),
             options: [
                 'Catégorie 1', 'Catégorie 2', 'Catégorie 3', 'Catégorie 4', 'Catégorie 5'
             ],
-
-            onSubmit() {
-                if (story_title.value === '' || story_category.value === '' || story_description.value === '' || story_content.value === '') {
-                    $q.notify({
-                        color: 'red-5',
-                        textColor: 'white',
-                        icon: 'warning',
-                        message: 'Veuillez remplir tout les champs'
-                    })
-                }
-            }
-
         }
     },
     data() {
         return {
             title: "",
-            audioList: [
-                {
-                    name: "audio 1",
-                    url: "http://www.ytmp3.cn/down/76865.mp3",
-                },
-                {
-                    name: "audio 2",
-                    url: "http://www.ytmp3.cn/down/76857.mp3",
-                },
-            ],
             windowWidth: window.innerWidth,
+            url: null,
         };
     },
     mounted() {
@@ -234,6 +213,31 @@ export default {
         }
     },
     methods: {
+        onSubmit() {
+            this.addStory()
+        },
+        async addStory() {
+            const headers = {
+                'Accept': 'application/json'
+            }
+
+            const data = {
+                email: this.email,
+                password: this.password
+            }
+
+            axios.post('http://127.0.0.1:8000/api/login', data, headers)
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+        onImageUploadChange(e) {
+            const file = e.target.files[0]
+            this.url = URL.createObjectURL(file)
+        },
         windowSize() {
             if (599.99 > this.windowWidth > 0)
                 return ''
@@ -247,7 +251,7 @@ export default {
                 return 'q-pa-xl'
         },
         isMobile() {
-            if (599.99 > this.windowWith)
+            if (1023.99 > this.windowWidth)
                 return true
             else
                 return false
@@ -259,3 +263,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.file_input {
+    background-color: red;
+}
+</style>

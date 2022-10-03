@@ -50,7 +50,6 @@
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 import "../../css/Authentification/authentification.scss"
@@ -66,8 +65,6 @@ export default {
         const passwordRules = [val => val && val.length > 8 || 'Votre mot de passe doit contenir au moins au moins 8 caracteres']
         // const emailRules = null
         // const passwordRules = null
-
-        const router = useRouter()
 
         return {
             email,
@@ -99,8 +96,8 @@ export default {
             axios.post('http://127.0.0.1:8000/api/login', data, headers)
                 .then((response) => {
                     console.log(response)
-                    localStorage.setItem('loginToken', response.data.token)
-                    // this.$router.push('/dashboard')
+                    // localStorage.setItem('loginToken', response.data.token)
+                    this.$router.push('/dashboard')
                 })
                 .catch((error) => {
                     let obj = error.response.data.errors
@@ -111,7 +108,7 @@ export default {
                         icon: 'warning',
                         message: obj
                     })
-
+                    ref
                 });
         },
     }
@@ -119,6 +116,13 @@ export default {
 </script>
 
 <style scoped>
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+    color: white !important;
+}
+
 .q-field__native,
 .q-field__prefix,
 .q-field__suffix,

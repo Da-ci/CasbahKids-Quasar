@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Notify } from 'quasar'
+import { LocalStorage, Notify } from 'quasar'
 import Router from '../router/routes.js'
 
 export default function checkAuth() {
@@ -11,7 +11,10 @@ export default function checkAuth() {
         axios.post('http://127.0.0.1:8000/api/checkAuth', data)
             .then((response) => {
                 if(response.status == 205)
+                {
+                    console.log(response)
                     Router.push('/dashboard')
+                }
             })
             .catch((error) => {
                 console.log(error)

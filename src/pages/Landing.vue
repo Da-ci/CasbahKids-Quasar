@@ -259,10 +259,6 @@
     </div>
 </template>
 
-<script>
-
-</script>
-
 <style scoped>
 .fragment_text-1,
 .fragment_text-example-1,

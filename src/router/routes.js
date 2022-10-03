@@ -38,7 +38,6 @@ const routes = [
       { path: '/add', component: () => import('pages/Stories/AddStory.vue') },
       { path: '/manage/stories', component: () => import('pages/Stories/StoriesManagement.vue') },
       { path: '/show/profile/', component: () => import('pages/ShowProfile.vue') }
-
     ],
   },
 
