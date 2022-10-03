@@ -172,29 +172,6 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
-    // this.checkAuth()
-  },
-  methods: {
-    // async checkAuth() {
-
-    //   const data = localStorage.getItem('loginToken')
-
-    //   console.log('console log main layout : ' + data)
-
-    //   axios.post('http://127.0.0.1:8000/api/checkAuth', data)
-    //     .then(function (response) {
-    //       console.log(response);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     });
-    // },
-    
-  }
-
-
-
 })
 </script>
 

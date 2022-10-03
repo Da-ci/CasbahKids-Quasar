@@ -21,7 +21,6 @@ const routes = [
     }
   },
   {
-    path: '/register',
     name: 'register',
     component: () => import('layouts/AuthentificationLayout.vue'),
     children: [
@@ -29,7 +28,7 @@ const routes = [
     ],
   },
   {
-    path: '/dashboard',
+    name: 'dashboard',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/dashboard', component: () => import('pages/Dashboard.vue') },

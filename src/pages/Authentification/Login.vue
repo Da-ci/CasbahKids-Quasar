@@ -98,8 +98,9 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/login', data, headers)
                 .then((response) => {
+                    console.log(response)
                     localStorage.setItem('loginToken', response.data.token)
-                    this.$router.push('/dashboard')
+                    // this.$router.push('/dashboard')
                 })
                 .catch((error) => {
                     let obj = error.response.data.errors
