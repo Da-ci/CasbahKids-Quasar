@@ -11,8 +11,8 @@
                         <div class="col-xs-12 col-md-6">
                             <div class="q-pa-md">
                                 <div class="q-gutter-y-md column">
-                                    <q-input outlined clearable v-model="story_title" :rules="story_titleRules"
-                                        type="text" label="Titre de l'histoire">
+                                    <q-input outlined clearable v-model="name" :rules="nameRules" type="text"
+                                        label="Titre de l'histoire">
                                     </q-input>
                                 </div>
                             </div>
@@ -21,8 +21,8 @@
                         <div class="col-xs-12 col-md-6">
                             <div class="q-pa-md">
                                 <div class="q-gutter-y-md column">
-                                    <q-select outlined v-model="story_category" :rules="story_categoryRules"
-                                        :options="options" label="Catégorie" :dense="dense"></q-select>
+                                    <q-select outlined v-model="category" :rules="categoryRules" :options="options"
+                                        label="Catégorie" :dense="dense"></q-select>
                                 </div>
                             </div>
                         </div>
@@ -41,15 +41,15 @@
                                 <input type="file" @change="onImageUploadChange" />
                             </div>
                             <div class="q-pa-md">
-                                <q-input v-model="story_description" :rules="story_descriptionRules" filled
-                                    type="textarea" label="Description de l'histoire" hint="Max 150 characters"
-                                    accept=".jpg, image/*"/>
+                                <q-input v-model="description" :rules="descriptionRules" filled type="textarea"
+                                    label="Description de l'histoire" hint="Max 150 characters"
+                                    accept=".jpg, image/*" />
                             </div>
                         </div>
                         <div class="col-md-4 col-xs-12" :class="isMobile() ? 'order-last' : 'order-first' ">
                             <div class="q-pa-md">
-                                <q-img :src="url ? url : 'https://cdn.quasar.dev/img/parallax2.jpg'" class="border-radius"
-                                    style="aspect-ratio: 1/1; width: 100%;">
+                                <q-img :src="url ? url : 'https://cdn.quasar.dev/img/parallax2.jpg'"
+                                    class="border-radius" style="aspect-ratio: 1/1; width: 100%;">
                                     <div class="absolute-full text-subtitle2 flex flex-center">
                                         {{ story_title }}
                                     </div>
@@ -67,7 +67,7 @@
                 <q-step :name="3" title="Ecrire l'histoire" icon="add_comment" :done="step > 3">
                     <div>
                         <div class="q-pa-md q-gutter-sm">
-                            <q-editor v-model="story_content" :rules="story_contentRules" min-height="5rem" />
+                            <q-editor v-model="content" :rules="contentRules" min-height="5rem" />
                         </div>
                     </div>
                     <q-stepper-navigation>
@@ -89,7 +89,7 @@
                         <q-separator />
 
                         <q-tab-panels v-model="tab" animated>
-                            <q-tab-panel name="mails">
+                            <!-- <q-tab-panel name="mails">
                                 <div class="text-h6">Uploader</div>
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </q-tab-panel>
+                            </q-tab-panel> -->
 
                         </q-tab-panels>
                     </q-card>
@@ -157,22 +157,22 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import AudioRecorder from '../../components/AudioRecorder.vue'
+import axios from 'axios'
 
 export default {
     setup() {
-
         const $q = useQuasar()
 
-        const story_title = ref('Title')
-        const story_category = ref('category')
-        const story_description = ref('description')
-        const story_content = ref('content')
-        const image = ref('')
+        const name = ref('Title')
+        const category = ref('category')
+        const description = ref('description')
+        const content = ref('Histoire de plus de 10 caracteres')
+        const picture = ref('')
 
-        const story_titleRules = [val => val && val.length > 0 || 'Saisissez le titre de l\'histoire']
-        const story_categoryRules = [val => val && val.length > 0 || 'Choisissez une catégorie']
-        const story_descriptionRules = [val => val && val.length > 0 || 'Saisissez une description de l\'histoire']
-        const story_contentRules = [val => val && val.length > 0 || 'Entrez le contenu de l\'histoire']
+        const nameRules = [val => val && val.length > 0 || 'Saisissez le titre de l\'histoire']
+        const categoryRules = [val => val && val.length > 0 || 'Choisissez une catégorie']
+        const descriptionRules = [val => val && val.length > 0 || 'Saisissez une description de l\'histoire']
+        const contentRules = [val => val && val.length > 0 || 'Entrez le contenu de l\'histoire']
 
         function onRejected() {
             $q.notify({
@@ -184,15 +184,15 @@ export default {
         return {
             dense: ref(false),
             step: ref(1),
-            story_title,
-            story_category,
-            story_description,
-            story_content,
-            story_titleRules,
-            story_categoryRules,
-            story_descriptionRules,
-            story_contentRules,
-            image,
+            name,
+            category,
+            description,
+            content,
+            nameRules,
+            categoryRules,
+            descriptionRules,
+            contentRules,
+            picture,
             tab: ref('mails'),
             splitterModel: ref(20),
             options: [
@@ -211,32 +211,48 @@ export default {
         window.onresize = () => {
             this.windowWidth = window.innerWidth;
         }
+        this.bearerToken()
     },
     methods: {
+        bearerToken() {
+            console.log(localStorage.getItem('bearerToken'))
+        },
         onSubmit() {
             this.addStory()
         },
         async addStory() {
+
+            const token = localStorage.getItem('bearerToken')
+            console.log(token)
+
             const headers = {
-                'Accept': 'application/json'
+                headers:
+                {
+                    Accept: 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
             }
 
             const data = {
-                email: this.email,
-                password: this.password
+                name: this.name,
+                category: this.category,
+                description: this.description,
+                content: this.content,
+                picture: this.picture,
             }
 
-            axios.post('http://127.0.0.1:8000/api/login', data, headers)
+            axios.post('http://127.0.0.1:8000/api/story/store', data, headers)
                 .then((response) => {
                     console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)
                 })
+
         },
         onImageUploadChange(e) {
-            const file = e.target.files[0]
-            this.url = URL.createObjectURL(file)
+            this.picture = e.target.files[0]
+            this.url = URL.createObjectURL(this.picture)
         },
         windowSize() {
             if (599.99 > this.windowWidth > 0)
@@ -258,7 +274,6 @@ export default {
         }
     },
     components: {
-        AudioRecorder,
         AudioRecorder
     }
 }

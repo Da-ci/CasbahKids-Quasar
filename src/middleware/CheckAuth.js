@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { LocalStorage, Notify } from 'quasar'
+import { Notify } from 'quasar'
 import Router from '../router/routes.js'
 
 export default function checkAuth() {
 
-    if (localStorage.getItem('loginToken')) {
+    if (localStorage.getItem('bearerToken')) {
 
-        const data = localStorage.getItem('loginToken')
+        const data = localStorage.getItem('bearerToken')
 
         axios.post('http://127.0.0.1:8000/api/checkAuth', data)
             .then((response) => {
