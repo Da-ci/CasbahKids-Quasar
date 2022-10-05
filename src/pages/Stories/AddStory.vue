@@ -89,13 +89,13 @@
                         <q-separator />
 
                         <q-tab-panels v-model="tab" animated>
-                            <!-- <q-tab-panel name="mails">
+                            <q-tab-panel name="mails">
                                 <div class="text-h6">Uploader</div>
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">
                                         <div class="q-pa-md">
-                                            <q-uploader url="http://localhost:4444/upload"
-                                                style="width: 100%; margin: auto;  " />
+                                            <q-uploader @uploaded="onAudioUpload" url="http://127.0.0.1:8000/api/upload"
+                                                style="width: 100%; margin: auto;" accept=".mp3, audio/*" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
@@ -108,7 +108,6 @@
                                                 Vitae
                                                 sint amet doloremque commodi repellendus ea voluptatibus
                                                 maiores!</p>
-
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +135,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </q-tab-panel> -->
+                            </q-tab-panel>
 
                         </q-tab-panels>
                     </q-card>
@@ -168,6 +167,7 @@ export default {
         const description = ref('description')
         const content = ref('Histoire de plus de 10 caracteres')
         const picture = ref('')
+        const audio = ref('')
 
         const nameRules = [val => val && val.length > 0 || 'Saisissez le titre de l\'histoire']
         const categoryRules = [val => val && val.length > 0 || 'Choisissez une catégorie']
@@ -198,6 +198,7 @@ export default {
             options: [
                 'Catégorie 1', 'Catégorie 2', 'Catégorie 3', 'Catégorie 4', 'Catégorie 5'
             ],
+            audio,
         }
     },
     data() {
@@ -214,22 +215,31 @@ export default {
         this.bearerToken()
     },
     methods: {
-        bearerToken() {
-            console.log(localStorage.getItem('bearerToken'))
+        onImageUploadChange(e) {
+            this.url = URL.createObjectURL(e.target.files[0])
+            this.picture = new FormData()
+            this.picture.append('image', e.target.files[0], e.target.files[0].name)
+        },
+        onAudioUpload(file) {
+            this.audio = new FormData()
+            this.audio.append('audio', file.files[0], file.files[0].name)
         },
         onSubmit() {
             this.addStory()
         },
         async addStory() {
 
-            const token = localStorage.getItem('bearerToken')
-            console.log(token)
+            console.log(AudioRecorder.init())
 
+            return
+
+            const token = localStorage.getItem('bearerToken')
             const headers = {
                 headers:
                 {
-                    Accept: 'application/json',
-                    Authorization: `Bearer ${token}`
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
                 }
             }
 
@@ -239,6 +249,7 @@ export default {
                 description: this.description,
                 content: this.content,
                 picture: this.picture,
+                audio: this.audio
             }
 
             axios.post('http://127.0.0.1:8000/api/story/store', data, headers)
@@ -250,9 +261,8 @@ export default {
                 })
 
         },
-        onImageUploadChange(e) {
-            this.picture = e.target.files[0]
-            this.url = URL.createObjectURL(this.picture)
+        bearerToken() {
+            console.log(localStorage.getItem('bearerToken'))
         },
         windowSize() {
             if (599.99 > this.windowWidth > 0)

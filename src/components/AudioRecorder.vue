@@ -71,6 +71,7 @@ export default {
               const blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
               this.audio = window.URL.createObjectURL(blob)
               this.chunks = []
+              return this.audios = blob
             }
           })
           .catch(function (err) {
@@ -84,7 +85,7 @@ export default {
     },
     record() {
       if (this.recorder) return
-      if(!this.allowAudio) {
+      if (!this.allowAudio) {
         alert('Please allow to use the audio in settings')
         return
       }
@@ -113,7 +114,6 @@ export default {
       this.running = true
     },
     stopTime() {
-      console.log("thanos")
       this.running = false
       this.timeStopped = new Date()
       clearInterval(this.started)
