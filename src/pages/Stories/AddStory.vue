@@ -2,7 +2,7 @@
 
     <q-page :class=windowSize()>
         <q-form @submit="onSubmit" enctype="multipart/form-data">
-            <q-stepper flat v-model="step" vertical color="primary" animated style="height: 100%">
+            <q-stepper flat v-model="step" vertical color="primary" animated style="height: 100%" draggable="false" keep-alive>
                 <h4 class="flex flex-center" style="padding: 0; margin: 0; margin-bottom: 10px;">Ajouter une histoire
                 </h4>
                 <q-separator />
