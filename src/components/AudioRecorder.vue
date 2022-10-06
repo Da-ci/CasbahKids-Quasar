@@ -33,12 +33,11 @@
 /* eslint-disable */
 export default {
   name: 'PageIndex',
-
   data() {
     return {
       mediaRecorder: null,
       chunks: [],
-      audios: [],
+      blob: null,
       audio: null,
       allowAudio: false,
       btnStop: false,
@@ -67,12 +66,11 @@ export default {
               this.chunks.push(e.data)
             }
 
-            this.mediaRecorder.onstop = (e) => {
-              const blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
-              this.audio = window.URL.createObjectURL(blob)
-              this.chunks = []
-              return this.audios = blob
-            }
+            // this.mediaRecorder.onstop = (e) => {
+            //   this.blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
+            //   this.audio = window.URL.createObjectURL(this.blob)
+            //   this.chunks = []
+            // }
           })
           .catch(function (err) {
             console.log('The following getUserMedia error occured: ' + err)
@@ -95,13 +93,19 @@ export default {
       this.recorder = true
       this.startTime()
     },
-    stop() {
+    stop(event) {
       if (!this.recorder) return
       this.isAnimate = false
       this.recorder = false
       this.mediaRecorder.stop()
       this.btnStop = false
       this.stopTime()
+
+      this.blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
+      // this.audio = window.URL.createObjectURL(this.blob)
+      // this.chunks = []
+
+      this.$emit('clicked', this.blob)
     },
     startTime() {
       if (this.running) return

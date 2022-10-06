@@ -1,7 +1,7 @@
 <template>
 
     <q-page :class=windowSize()>
-        <q-form @submit="onSubmit">
+        <q-form @submit="onSubmit" enctype="multipart/form-data">
             <q-stepper flat v-model="step" vertical color="primary" animated style="height: 100%">
                 <h4 class="flex flex-center" style="padding: 0; margin: 0; margin-bottom: 10px;">Ajouter une histoire
                 </h4>
@@ -118,7 +118,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12">
                                         <div class="q-pt-lg">
-                                            <AudioRecorder></AudioRecorder>
+                                            <AudioRecorder @clicked="recordedAudio"></AudioRecorder>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
@@ -145,7 +145,6 @@
                         <q-btn flat @click="step = 3" color="primary" label="Back" class="q-ml-sm" />
                     </q-stepper-navigation>
                 </q-step>
-
             </q-stepper>
 
         </q-form>
@@ -215,10 +214,16 @@ export default {
         this.bearerToken()
     },
     methods: {
+        recordedAudio(value) {
+            this.audio = value
+            console.log(value + ' hehe')
+        },
         onImageUploadChange(e) {
             this.url = URL.createObjectURL(e.target.files[0])
             this.picture = new FormData()
             this.picture.append('image', e.target.files[0], e.target.files[0].name)
+            console.log(this.picture)
+            // this.picture = e.target.files[0]
         },
         onAudioUpload(file) {
             this.audio = new FormData()
@@ -229,17 +234,13 @@ export default {
         },
         async addStory() {
 
-            console.log(AudioRecorder.init())
-
-            return
-
             const token = localStorage.getItem('bearerToken')
             const headers = {
                 headers:
                 {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': "multipart/form-data",
                 }
             }
 
@@ -250,6 +251,17 @@ export default {
                 content: this.content,
                 picture: this.picture,
                 audio: this.audio
+            }
+
+            for (const value of Object.values(data)) {
+                if (!value) {
+                    this.$q.notify({
+                        type: 'negative',
+                        message: 'Vous devez remplir tout les champs'
+                    })
+                    return
+                }
+
             }
 
             axios.post('http://127.0.0.1:8000/api/story/store', data, headers)
